@@ -2,6 +2,9 @@
 
 Fox Runner is a high-performance, web-based 3D arcade game featuring a retro-cyberpunk aesthetic. The core gameplay revolves around navigating a spaceship through a procedurally generated grid field filled with color-shifting obstacle cubes, requiring high reflexes and precise timing.
 
+* **Live Demo**: [https://fox-runner.vercel.app/](https://fox-runner.vercel.app/)
+* **Source Code**: [https://github.com/Dpehect/Fox-Runner](https://github.com/Dpehect/Fox-Runner)
+
 ## Architecture and Technical Details
 
 The codebase is built on a modern React, Three.js, and React Three Fiber (R3F) architecture. It uses declarative component rendering combined with low-level Three.js lifecycle hooks to optimize GPU draw calls and CPU thread utilization.
