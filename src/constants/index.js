@@ -25,9 +25,9 @@ export const WALL_RADIUS = 40
 
 export const COLORS = [
   {
-    name: 'pink',
-    hex: '#ff69b4',
-    three: new THREE.Color(0xff2190)
+    name: 'yellow',
+    hex: '#ffcc00',
+    three: new THREE.Color(0xffcc00)
   },
   {
     name: 'red',

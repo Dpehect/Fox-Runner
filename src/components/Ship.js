@@ -40,6 +40,7 @@ function ShipModel(props, { children }) {
 
   // subscribe to controller updates on mount
   const controlsRef = useRef(useStore.getState().controls)
+  const engineHue = useRef(Math.random())
   useEffect(() => useStore.subscribe(
     controls => (controlsRef.current = controls),
     state => state.controls
@@ -240,6 +241,12 @@ function ShipModel(props, { children }) {
     outerConeExhaust.current.scale.x = (0.9 + fastSine / 15) * scaleFactor
 
     bodyDetail.current.material.color = mutation.globalColor
+
+    // Hue cycle for engine exhaust
+    engineHue.current = (engineHue.current + delta * 0.15) % 1.0
+    pointLight.current.color.setHSL(engineHue.current, 1.0, 0.5)
+    coneExhaust.current.material.emissive.setHSL(engineHue.current, 1.0, 0.5)
+    outerConeExhaust.current.material.color.setHSL(engineHue.current, 1.0, 0.5)
   })
 
   return (

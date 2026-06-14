@@ -1,13 +1,17 @@
-import { Object3D } from 'three'
+import { Object3D, Color } from 'three'
 import { useRef, useMemo } from 'react'
 import { useFrame } from '@react-three/fiber'
 
-import { PLANE_SIZE, COLORS, LEVEL_SIZE } from '../constants'
+import { PLANE_SIZE, LEVEL_SIZE } from '../constants'
 import { useStore, mutation } from '../state/useStore'
 
 import distance2D from '../util/distance2D'
 import { generateCubeTunnel, generateDiamond } from '../util/generateFixedCubes'
 
+
+if (window.cubeHueOffset === undefined) {
+  window.cubeHueOffset = Math.random()
+}
 
 export default function InstancedCubes() {
   const mesh = useRef()
@@ -57,7 +61,9 @@ export default function InstancedCubes() {
 
       }
 
-      material.current.color = mutation.globalColor
+      const offset = window.cubeHueOffset !== undefined ? window.cubeHueOffset : 0
+      const hue = (offset + state.clock.getElapsedTime() * 0.04) % 1.0
+      material.current.color.setHSL(hue, 0.75, 0.5)
 
       dummy.position.set(
         cube.x,
@@ -77,7 +83,7 @@ export default function InstancedCubes() {
   return (
     <instancedMesh ref={mesh} args={[null, null, diamondCoords.length]}>
       <boxBufferGeometry args={[20, 40, 20]} />
-      <meshBasicMaterial ref={material} color={COLORS[0].three} />
+      <meshStandardMaterial ref={material} color={new Color().setHSL(window.cubeHueOffset, 0.75, 0.5)} roughness={0.5} metalness={0.3} />
     </instancedMesh>
   )
 }

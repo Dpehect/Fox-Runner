@@ -2,7 +2,6 @@ import { useProgress } from '@react-three/drei'
 import { useState, useEffect } from 'react'
 
 import Loader from './CustomLoader'
-import Author from './Author'
 
 import '../../styles/gameMenu.css'
 
@@ -54,9 +53,13 @@ const Overlay = () => {
   }
 
   return shown ? (
-    <div onClick={() => setHasInteracted()} className={`game__container`} style={{ opacity: shown ? 1 : 0, background: opaque ? '#141622FF' : '#141622CC' }}>
+    <div onClick={() => setHasInteracted()} className={`game__container`} style={{ opacity: shown ? 1 : 0, background: opaque ? '#0a0518FF' : '#0a0518CC' }}>
       <div className="game__menu">
-        <img className="game__logo" src="cuberun-logo.png" alt="Cuberun Logo" />
+        <div className="game__logo-container">
+          <img className="game__logo-fox" src="fox-logo.png" alt="Fox Logo" />
+          <h1 className="game__title-text">FOX RUNNER</h1>
+          <h2 className="game__subtitle-text">CYBER EDITION</h2>
+        </div>
         <div className="game__subcontainer">
           {!hasLoaded ? (
             <Loader active={active} progress={progress} />
@@ -70,7 +73,6 @@ const Overlay = () => {
                   ← a / d →
                 </span>
                 <span className="game__menu-warning">Photosensitivity warning - Game contains flashing lights</span>
-                <Author />
               </div>
             </>
           )}

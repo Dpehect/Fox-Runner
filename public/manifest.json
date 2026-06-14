@@ -1,6 +1,6 @@
 {
-  "short_name": "CubeRun",
-  "name": "CubeRun",
+  "short_name": "Fox Runner",
+  "name": "Fox Runner",
   "icons": [
     {
       "src": "favicon.png",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "fullscreen",
-  "theme_color": "#fe2079",
-  "background_color": "#141622"
+  "theme_color": "#ffcc00",
+  "background_color": "#0a0518"
 }
